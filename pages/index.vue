@@ -1,19 +1,24 @@
 <template>
-<div id="main">
-  <h1>openBD viewr</h1>
-  <div>openBDのAPIをコールして書影を表示します</div>
-  <div class="form"> 
-    <input type="text" class="border border-black w-80" v-model="isbn">
-    <button class="search" @click="onClick">検索</button>
+<div id="main" class="m-auto max-w-2xl text-center mt-20">
+  <h1 class="text-4xl font-bold text">openBD viewr</h1>
+
+  <div class="shadow flex mt-16">
+      <input class="w-full rounded p-4" type="text" placeholder="ISBN..." v-model="isbn">
+      <button class="bg-white w-auto flex justify-end items-center text-blue-500 p-2 hover:text-blue-400" @click="onClick">
+          <i class="material-icons">search</i>
+      </button>
   </div>
-  <div class="result">
-    <p>画像をダウンロードするには、「画像を右クリック」「名前を付けて保存」で保存してください</p>
-    <p>タイトル</p>
-    <div class="title">{{ title }}</div>
-    <p>画像</p>
-    <span v-if="cover === ''">画像なし</span>
-    <img v-else :src="cover">
+
+  <div class="result mt-8">
+    <p class="text-3xl">タイトル</p>
+    <div class="title mt-3">{{ title }}</div>
+    <p class="text-3xl mt-5">書影</p>
+    <p class="mt-3">
+      <span v-if="cover === ''" class="">書影なし</span>
+      <img v-else :src="cover" class="m-auto">
+    </p>
   </div>
+
 </div>
 </template>
 
