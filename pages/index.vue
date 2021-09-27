@@ -7,8 +7,12 @@
     <button class="search" @click="onClick">検索</button>
   </div>
   <div class="result">
+    <p>画像をダウンロードするには、「画像を右クリック」「名前を付けて保存」で保存してください</p>
+    <p>タイトル</p>
     <div class="title">{{ title }}</div>
-    <img :src="cover">
+    <p>画像</p>
+    <span v-if="cover === ''">画像なし</span>
+    <img v-else :src="cover">
   </div>
 </div>
 </template>
@@ -19,7 +23,7 @@ export default {
   data() {
     return {
       isbn: '',
-      title: 'title...',
+      title: '',
       cover: ''
     }
   },
