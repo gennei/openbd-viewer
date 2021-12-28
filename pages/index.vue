@@ -17,6 +17,8 @@
       <span v-if="cover === ''" class="">書影なし</span>
       <img v-else :src="cover" class="m-auto">
     </p>
+    <p class="text-3xl mt-5">概要</p>
+    <div class="mt-3">{{ description }}</div>
   </div>
 
 </div>
@@ -29,7 +31,8 @@ export default {
     return {
       isbn: '',
       title: '',
-      cover: ''
+      cover: '',
+      description: ''
     }
   },
   methods: {
@@ -45,6 +48,13 @@ export default {
       const book = data[0]
       this.title = book.summary.title
       this.cover = book.summary.cover
+
+      const content = book.onix.CollateralDetail.TextContent.find(a => a.TextType == "03")
+      if (content === undefined) {
+        return
+      }
+
+      this.description = content.Text.trim()
     }
   }
 }
