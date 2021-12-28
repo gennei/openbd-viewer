@@ -46,6 +46,9 @@ export default {
           console.log(error);
         });
       const book = data[0]
+      if (book == null) {
+        return
+      }
       this.title = book.summary.title
       this.cover = book.summary.cover
 
