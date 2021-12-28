@@ -2,7 +2,6 @@ name: github pages
 
 on:
   push:
-    skip-checks: true
     branches:
       - main
 
@@ -25,6 +24,6 @@ jobs:
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: main
-        PUBLISH_DIR: ./docs
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./docs
