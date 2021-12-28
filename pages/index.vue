@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     onClick: async function() {
-      console.log('click')
 
       const data = await fetch('https://api.openbd.jp/v1/get?isbn=' + this.isbn)
         .then(function (response) {
@@ -43,10 +42,9 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
-      console.log(data[0].summary)
-      console.log(data[0].summary.title)
-      this.title = data[0].summary.title
-      this.cover = data[0].summary.cover
+      const book = data[0]
+      this.title = book.summary.title
+      this.cover = book.summary.cover
     }
   }
 }
